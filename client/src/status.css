@@ -1,0 +1,73 @@
+.tab-status {
+  --ink: #14202b;
+  --muted: #5b6b7a;
+  --paper: #ffffff;
+  --ground: #edf1f5;
+  --line: #d3dce5;
+  --accent: #1f4e79;
+  --ok: #0f6b4f;
+  --ok-bg: #dff3ea;
+  --bad: #a3261b;
+  --bad-bg: #fbe4e1;
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 15px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+
+  * { box-sizing: border-box; }
+  main { max-width: 980px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { margin: 0; font-size: 28px; letter-spacing: -0.01em; }
+  .lede { margin: 4px 0 24px; color: var(--muted); }
+
+  .controls {
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 16px;
+  }
+  .controls label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+  .controls .grow { flex: 1 1 260px; }
+  input, select, button, textarea {
+    font: inherit; color: var(--ink);
+    padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper);
+  }
+  input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  button { cursor: pointer; }
+  button:hover:not(:disabled) { border-color: var(--accent); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; padding: 8px 18px; }
+
+  .note { color: var(--muted); font-size: 13px; margin: 6px 0; }
+  .error, .warn { padding: 10px 12px; border-radius: 6px; margin: 12px 0; }
+  .error { background: var(--bad-bg); color: var(--bad); }
+  .warn { background: #fff4d6; color: #6b4e00; }
+  .empty { margin-top: 20px; color: var(--muted); }
+
+  section { margin-top: 24px; }
+  .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .tablewrap { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { font-size: 13px; color: var(--muted); font-weight: 600; background: #f6f8fa; }
+  tr:last-child td { border-bottom: 0; }
+  td small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .badge.ok { background: var(--ok-bg); color: var(--ok); }
+  .badge.bad { background: var(--bad-bg); color: var(--bad); }
+  .badge.neutral { background: #e8edf2; color: var(--muted); }
+
+  textarea { resize: vertical; font: inherit; color: var(--ink); padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; width: 100%; }
+  textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  tr.missing td { background: #fafbfc; color: var(--muted); }
+
+  .th { display: inline-flex; align-items: center; gap: 8px; }
+  button.colcopy { padding: 1px 8px; font-size: 12px; font-weight: 500; color: var(--accent); border-radius: 4px; }
+
+  .warn { word-break: break-word; font-size: 13px; }
+
+  button.secondary { background: var(--paper); border-color: var(--bad); color: var(--bad); padding: 8px 18px; font-weight: 600; }
+  button.secondary:hover:not(:disabled) { background: var(--bad-bg); border-color: var(--bad); }
+  .lookback { min-width: 120px; }
+}

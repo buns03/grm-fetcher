@@ -1,0 +1,11 @@
+{
+  "name": "status-fetcher",
+  "private": true,
+  "scripts": {
+    "install:all": "npm i && npm --prefix server i && npm --prefix client i && npm --prefix server run browsers",
+    "dev": "concurrently -n server,client -c blue,green \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "inspect": "npm --prefix server run inspect",
+    "typecheck": "npm --prefix server run typecheck && npm --prefix client run typecheck"
+  },
+  "devDependencies": { "concurrently": "^9.0.0" }
+}
