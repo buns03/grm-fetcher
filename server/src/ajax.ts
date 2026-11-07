@@ -80,7 +80,7 @@ export async function fetchAllMultiservicesAjax(page: Page): Promise<{ rows: Raw
 
   const starts: number[] = [];
   for (let s = MULTI_PAGE_SIZE; s < total; s += MULTI_PAGE_SIZE) starts.push(s);
-  const pages = await mapLimit(starts, 10, (s) => fetchMultiPage(page, s, s / MULTI_PAGE_SIZE + 1));
+  const pages = await mapLimit(starts, 3, (s) => fetchMultiPage(page, s, s / MULTI_PAGE_SIZE + 1));
   for (const p of pages) rows.push(...p.data);
 
   const warnings: string[] = [];
@@ -123,7 +123,7 @@ export async function fetchAllBillsAjax(
 
   if (lastPage > 1) {
     const pages = Array.from({ length: lastPage - 1 }, (_, i) => i + 2);
-    const batches = await mapLimit(pages, 10, (p) => fetchBillPage(page, { month, year, status: statusParam, page: p }));
+    const batches = await mapLimit(pages, 3, (p) => fetchBillPage(page, { month, year, status: statusParam, page: p }));
     for (const b of batches) rows.push(...b.data);
   }
 
