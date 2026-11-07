@@ -44,10 +44,13 @@ export async function cached<T>(
   key: string,
   loader: () => Promise<T>,
   force = false,
+  maxAgeMs = Infinity,
 ): Promise<{ value: T; fetchedAt: number; fromCache: boolean }> {
   if (!force) {
     const hit = store.get(key);
-    if (hit) return { value: hit.value as T, fetchedAt: hit.fetchedAt, fromCache: true };
+    if (hit && Date.now() - hit.fetchedAt < maxAgeMs) {
+      return { value: hit.value as T, fetchedAt: hit.fetchedAt, fromCache: true };
+    }
   }
   let pending = inflight.get(key) as Promise<Entry<T>> | undefined;
   if (!pending) {
