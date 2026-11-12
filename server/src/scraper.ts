@@ -645,6 +645,9 @@ async function readAllRows(
       contactIdx,
       amountIdx,
     ]);
+    const remarkIdx = extra(config.columns.remark, [
+  ...taken, contactIdx, amountIdx, addressIdx,
+]);
     info.methodMissing = wantMethod && methodIdx < 0 && bankIdx < 0;
     info.methodHeader = methodIdx >= 0 ? t.headers[methodIdx] : "";
     info.bankHeader = bankIdx >= 0 ? t.headers[bankIdx] : "";
@@ -672,6 +675,7 @@ async function readAllRows(
           contact: contactIdx >= 0 ? (r[contactIdx] ?? "") : "",
           amount: amountIdx >= 0 ? (r[amountIdx] ?? "") : "",
           address: addressIdx >= 0 ? (r[addressIdx] ?? "") : "",
+           remark: remarkIdx >= 0 ? (r[remarkIdx] ?? "") : "",
         });
       }
     }

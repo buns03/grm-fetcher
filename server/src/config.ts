@@ -25,7 +25,7 @@ export const config = {
     total: /^\s*(grand\s*)?total(\s*(amount|bill|due))?\s*$/i,
     contact: /contact|phone|mobile|cell/i,
 amount: /^(?!.*status).*bill/i,
-address: /address/i,
+address: /address/i, remark: /remark/i,
   },
 
   // Portal status (upper-cased) -> label shown in this system.

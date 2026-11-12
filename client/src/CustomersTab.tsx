@@ -9,6 +9,7 @@ const COLUMNS = [
   { key: 'contact', label: 'CONTACT NO.', get: (r) => r.contact },
   { key: 'plan', label: 'PLAN', get: (r) => r.plan },
   { key: 'address', label: 'ADDRESS', get: (r) => r.address },
+  { key: 'remark', label: 'REMARKS', get: (r) => r.remark },
 ];
 
 // The PLAN column can show either the plan (Mbps) or the raw bill amount.
@@ -116,7 +117,7 @@ export default function CustomersTab() {
 
   function exportXlsx() {
     const ws = XLSX.utils.aoa_to_sheet([headers(), ...lines()]);
-    const widths = { accountName: 32, accountNo: 16, contact: 16, plan: 12, address: 60 };
+const widths = { accountName: 32, accountNo: 16, contact: 16, plan: 12, address: 60, remark: 30 };
     ws['!cols'] = columns.map((c) => ({ wch: widths[c.key] }));
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Customers');

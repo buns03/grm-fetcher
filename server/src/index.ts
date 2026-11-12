@@ -203,6 +203,7 @@ interface CustomerRow {
   bill: string;
   plan: string;
   address: string;
+  remark: string;
   _tokens: string[];
 }
 let built: { at: number; rows: CustomerRow[] } | null = null;
@@ -217,6 +218,7 @@ function customerRows(at: number, rows: RawRow[]) {
         bill: r.amount,
         plan: billToPlan(r.amount),
         address: r.address,
+         remark: r.remark,
         _tokens: tokenize(r.name),
       })),
     };

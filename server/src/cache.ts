@@ -9,7 +9,7 @@ interface Entry<T> {
   fetchedAt: number;
 }
 
-const VERSION = 1; // bump if the saved data shape changes, old files are then ignored
+const VERSION = 2; // bump if the saved data shape changes, old files are then ignored
 const DIR = path.resolve(process.env.DATA_DIR ?? 'data');
 fs.mkdirSync(DIR, { recursive: true });
 const fileOf = (key: string) => path.join(DIR, `${encodeURIComponent(key)}.json`);

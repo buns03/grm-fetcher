@@ -9,6 +9,7 @@ export interface RawRow {
   contact: string;
   amount: string;
   address: string;
+  remark: string;
 }
 
 export interface ResultRow {

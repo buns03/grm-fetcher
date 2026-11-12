@@ -64,12 +64,16 @@ async function fetchMultiPage(page: Page, start: number, draw: number): Promise<
   return res.json();
 }
 
+const cleanText = (v: unknown) =>
+  String(v ?? '').replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+
 function mapMultiRow(d: any): RawRow {
   return {
     name: d.name ?? '', number: d.no_services ?? '', numberRaw: d.no_services ?? '',
     method: '', bank: '', total: '',
     status: normalizeStatus(d.status ?? ''),
     contact: d.phone ?? '', amount: String(d.bill_month ?? ''), address: d.address ?? '',
+    remark: cleanText(d.remark),
   };
 }
 
@@ -109,7 +113,7 @@ function mapBillRow(d: any): RawRow {
     name: d.name ?? '', number: d.no_services ?? '', numberRaw: d.no_services ?? '',
     method: d.payment_method ?? '', bank: '', total: String(d.amount ?? ''),
     status: normalizeStatus(d.status ?? ''),
-    contact: d.phone ?? '', amount: String(d.amount ?? ''), address: d.address ?? '',
+    contact: d.phone ?? '', amount: String(d.amount ?? ''), address: d.address ?? '', remark: '',
   };
 }
 
